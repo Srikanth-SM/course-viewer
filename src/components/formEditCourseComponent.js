@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { ADD_COURSE, redirect, fetchCourse, updateCourse } from "../actions";
+import { addCourse, fetchCourse, updateCourse } from "../actions";
 
 class FormEditCourse extends React.Component {
   constructor(props) {
@@ -9,18 +9,9 @@ class FormEditCourse extends React.Component {
   }
   onHandleSubmit = event => {
     event.preventDefault();
-    this.props.updateCourse(this.state, () => {
-      console.log("after");
-      this.setState({ authorId: "", name: "", category: "" });
-      console.log(this.props);
-      if (this.props.redirectPath) {
-        this.props.history.push("/courses");
-        this.setState({ toCourses: true });
-        // console.log("if", this.state);
-        redirect(null);
-      }
-      console.log(this.props);
-    });
+    console.log(this.state);
+    this.props.updateCourse(this.state);
+    this.props.history.push("/courses");
   };
   onHandleChange = event => {
     const { name, value } = event.target;
@@ -30,8 +21,6 @@ class FormEditCourse extends React.Component {
     console.log("render");
     const authors = this.props.authors;
     const course = this.props.course;
-
-    console.log(authors, course, authors[course["authorId"]]);
     const authorOptions = Object.keys(authors).map(key => {
       return <option value={key}>{authors[key]}</option>;
     });
@@ -81,12 +70,10 @@ class FormEditCourse extends React.Component {
   }
 }
 function mapStateToProps(state, props) {
-  console.log("*****", props.match.params);
-  console.log({ ...state });
   const { authors, courses, redirectPath } = { ...state };
   let set = {};
   authors.map(author => {
-    set[author.id] = author.name;
+    return (set[author.id] = author.name);
   });
   let course = courses.filter(course => {
     return course.slug === props.match.params.slug;
@@ -102,5 +89,5 @@ function mapStateToProps(state, props) {
 
 export default connect(
   mapStateToProps,
-  { fetchCourse, updateCourse }
+  { fetchCourse, updateCourse, addCourse }
 )(FormEditCourse);

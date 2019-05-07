@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import { createBrowserHistory } from "history";
-import { ADD_COURSE, postCourse, redirect } from "../actions";
+import { addCourse, postCourse, redirect } from "../actions";
 class FormCourseComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -15,22 +15,10 @@ class FormCourseComponent extends React.Component {
     this.history = createBrowserHistory();
   }
 
-  // componentWillUpdate() {
-
-  //   return true;
-  // }
-
   onHandleSubmit = event => {
     event.preventDefault();
-    this.props.postCourse(this.state, () => {
-      this.setState({ authorId: "", name: "", category: "" });
-      if (this.props.redirectPath) {
-        this.props.history.push(this.props.redirectPath);
-        this.setState({ toCourses: true });
-        redirect(null);
-      }
-    });
-    // this.history.push("/courses");
+    this.props.addCourse(this.state);
+    this.props.history.push("/courses");
   };
   onHandleChange = event => {
     const { name, value } = event.target;
@@ -104,5 +92,5 @@ function mapStateToProps(state) {
 // export default FormCourseComponent;
 export default connect(
   mapStateToProps,
-  { postCourse, redirect }
+  { postCourse, redirect, addCourse }
 )(FormCourseComponent);

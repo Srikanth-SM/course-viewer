@@ -1,8 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-// import FormCourseComponent from "./formCourseComponent.js";
-import { fetchCourses, fetchAuthors, deleteCourse, redirect } from "../actions";
+import {
+  fetchCourses,
+  fetchAuthors,
+  deleteCourse,
+  showError
+} from "../actions";
 class Courses extends React.Component {
   state = {
     name: "",
@@ -24,11 +28,9 @@ class Courses extends React.Component {
     // event.preventDefault();
     this.setState({ course });
   };
+
   handleDeleteCourse = (event, course = null) => {
-    this.props.deleteCourse(course, () => {
-      this.props.history.push("/courses");
-      this.props.fetchCourses();
-    });
+    this.props.deleteCourse(course);
   };
 
   render() {
@@ -95,12 +97,12 @@ function mapStateToProps(state) {
   const { courses, authors, redirectPath } = { ...state };
   let set = {};
   authors.map(author => {
-    set[author.id] = author.name;
+    return (set[author.id] = author.name);
   });
   return { courses, authors: set, redirectPath };
 }
 
 export default connect(
   mapStateToProps,
-  { fetchCourses, fetchAuthors, deleteCourse }
+  { fetchCourses, fetchAuthors, deleteCourse, showError }
 )(Courses);

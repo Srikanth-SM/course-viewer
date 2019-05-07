@@ -1,26 +1,12 @@
 {
   "courses": [
     {
-      "id": 7,
-      "title": "Clean Code: Writing Code for Humans",
-      "slug": "writing-clean-code-humans",
-      "authorId": "2",
-      "category": "Software Practices",
-      "toCourses": false
-    },
-    {
-      "id": 8,
-      "title": "Architecting Applications for the Real World",
-      "slug": "architecting-applications-dotnet",
-      "authorId": 1,
-      "category": "Software Architecture"
-    },
-    {
       "id": 9,
       "title": "Becoming an Outlier: Reprogramming the Developer Mind",
       "slug": "career-reboot-for-developer-mind",
-      "authorId": 1,
-      "category": "Career"
+      "authorId": "2",
+      "category": "Careesr",
+      "toCourses": false
     },
     {
       "id": 10,
@@ -30,13 +16,40 @@
       "category": "HTML5"
     },
     {
-      "title": "asdasdqwe",
-      "authorId": "2",
-      "category": "JavaScripts",
+      "title": "asdasd",
+      "authorId": "1",
+      "category": "asdas",
       "toCourses": false,
-      "createdAt": 1556452970914,
-      "slug": "asdasdqwe",
+      "createdAt": 1556475059786,
+      "slug": "asdasd",
       "id": 11
+    },
+    {
+      "title": "sasas",
+      "authorId": "2",
+      "category": "sadad",
+      "toCourses": false,
+      "createdAt": 1556475224835,
+      "slug": "sasas",
+      "id": 12
+    },
+    {
+      "title": "asd",
+      "authorId": "1",
+      "category": "asdasd",
+      "toCourses": false,
+      "createdAt": 1556476064810,
+      "slug": "asd",
+      "id": 13
+    },
+    {
+      "title": "simon",
+      "authorId": "1",
+      "category": "simon",
+      "toCourses": false,
+      "createdAt": 1556476078407,
+      "slug": "simon",
+      "id": 14
     }
   ],
   "authors": [
